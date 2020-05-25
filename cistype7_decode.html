@@ -34,7 +34,7 @@
       
       
       // Generate a config file ready for loading
-      function crackPassword(form)
+      function crackPassword()
       {
           var crypttext = document.getElementById("crypttext").value.trim();
           var plaintext=''
@@ -93,7 +93,7 @@
           <input id="crypttext" name="crypttext" size="60" type="text">
         </div>
         <div class="submit">
-          <input value="Crack Password" onclick="crackPassword(this.form)" type="button">
+          <input value="Crack Password" onclick="crackPassword()" type="button">
         </div>
         <div class="output">
           <input id="plaintext" name="plaintext" size="40" type="text">
