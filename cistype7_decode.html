@@ -42,7 +42,7 @@ function isDigit(theDigit)
 // Generate a config file ready for loading
 function crackPassword(form)
 {
-    var crypttext=''
+    var crypttext=form.crypttext.value.toUpperCase()
     var plaintext=''
     var xlat="dsfd;kfoA,.iyewrkldJKDHSUBsgvca69834ncxv9873254k;fg87"
     var seed, i, val=0
