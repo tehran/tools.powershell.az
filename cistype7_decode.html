@@ -23,72 +23,73 @@
 
   gtag('config', 'UA-21733018-5');
   </script>
-  
-	<script language="JavaScript1.2" type="text/javascript">
-<!--
-// Is the character a digit?
-function isDigit(theDigit)
-{
-    var digitArray = new Array('0','1','2','3','4','5','6','7','8','9')
-
-    for (j = 0; j < digitArray.length; j++)  {
-        if (theDigit == digitArray[j])
-            return true
-    }
-    return false
-}
-
-
-// Generate a config file ready for loading
-function crackPassword(form)
-{
-    var crypttext=form.crypttext.value.toUpperCase()
-    var plaintext=''
-    var xlat="dsfd;kfoA,.iyewrkldJKDHSUBsgvca69834ncxv9873254k;fg87"
-    var seed, i, val=0
-
-    if(crypttext.length & 1)
-        return
-
-    seed = (crypttext.charCodeAt(0) - 0x30) * 10 + crypttext.charCodeAt(1) - 0x30
-
-    if (seed > 15 || !isDigit(crypttext.charAt(0)) || !isDigit(crypttext.charAt(1)))
-        return
-
-        for (i = 2 ; i <= crypttext.length; i++) {
-                if(i !=2 && !(i & 1)) {
-                        plaintext+=String.fromCharCode(val ^ xlat.charCodeAt(seed++))
-            seed%=xlat.length
-                        val = 0;
-                }
-
-                val *= 16
-
-        if(isDigit(crypttext.charAt(i))) {
-            val += crypttext.charCodeAt(i) - 0x30
-            continue
-        }
-
-
-        if(crypttext.charCodeAt(i) >= 0x41 && crypttext.charCodeAt(i) <= 0x46) {
-            val += crypttext.charCodeAt(i) - 0x41 + 0x0a
-            continue
-        }
-
-        if(crypttext.length != i)
-            return
-        }
-
-    form.plaintext.value=plaintext
-}
-
--->
-	</script>
 	
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
   </head>
   <body>
+
+    <script language="JavaScript1.2" type="text/javascript">
+      <!--
+      // Is the character a digit?
+      function isDigit(theDigit)
+      {
+          var digitArray = new Array('0','1','2','3','4','5','6','7','8','9')
+      
+          for (j = 0; j < digitArray.length; j++)  {
+              if (theDigit == digitArray[j])
+                  return true
+          }
+          return false
+      }
+      
+      
+      // Generate a config file ready for loading
+      function crackPassword(form)
+      {
+          var crypttext=form.crypttext.value.toUpperCase()
+          var plaintext=''
+          var xlat="dsfd;kfoA,.iyewrkldJKDHSUBsgvca69834ncxv9873254k;fg87"
+          var seed, i, val=0
+      
+          if(crypttext.length & 1)
+              return
+      
+          seed = (crypttext.charCodeAt(0) - 0x30) * 10 + crypttext.charCodeAt(1) - 0x30
+      
+          if (seed > 15 || !isDigit(crypttext.charAt(0)) || !isDigit(crypttext.charAt(1)))
+              return
+      
+              for (i = 2 ; i <= crypttext.length; i++) {
+                      if(i !=2 && !(i & 1)) {
+                              plaintext+=String.fromCharCode(val ^ xlat.charCodeAt(seed++))
+                  seed%=xlat.length
+                              val = 0;
+                      }
+      
+                      val *= 16
+      
+              if(isDigit(crypttext.charAt(i))) {
+                  val += crypttext.charCodeAt(i) - 0x30
+                  continue
+              }
+      
+      
+              if(crypttext.charCodeAt(i) >= 0x41 && crypttext.charCodeAt(i) <= 0x46) {
+                  val += crypttext.charCodeAt(i) - 0x41 + 0x0a
+                  continue
+              }
+      
+              if(crypttext.length != i)
+                  return
+              }
+      
+          form.plaintext.value=plaintext
+      }
+      
+      -->
+      </script>
+
     <div id="header">
       <h1><a href="index.html">Online Tools</a></h1>
     </div>
