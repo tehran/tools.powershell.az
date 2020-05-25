@@ -4,81 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Cisco VPN Client Password Decoder">
-    <title>Cisco VPN Client Password Decoder
+    <meta name="description" content="Cisco Type 7 Password Cracker">
+    <title>Cisco Type 7 Password Cracker
     </title>
-	<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-21733018-5');
-  </script>
+    <script>
+      if (location.hostname != 'localhost') {
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44208259-6', 'auto');
+        ga('send', 'pageview');
+      }
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
   </head>
   <body>
-
-    <script language="JavaScript1.2" type="text/javascript">
-      <!--
-      // Is the character a digit?
-      function isDigit(theDigit)
-      {
-          var digitArray = new Array('0','1','2','3','4','5','6','7','8','9')
-      
-          for (j = 0; j < digitArray.length; j++)  {
-              if (theDigit == digitArray[j])
-                  return true
-          }
-          return false
-      }
-      
-      
-      // Generate a config file ready for loading
-      function crackPassword()
-      {
-          var crypttext = document.getElementById("crypttext").value.trim();
-          var plaintext=''
-          var xlat="dsfd;kfoA,.iyewrkldJKDHSUBsgvca69834ncxv9873254k;fg87"
-          var seed, i, val=0
-      
-          if(crypttext.length & 1)
-              return
-      
-          seed = (crypttext.charCodeAt(0) - 0x30) * 10 + crypttext.charCodeAt(1) - 0x30
-      
-          if (seed > 15 || !isDigit(crypttext.charAt(0)) || !isDigit(crypttext.charAt(1)))
-              return
-      
-              for (i = 2 ; i <= crypttext.length; i++) {
-                      if(i !=2 && !(i & 1)) {
-                              plaintext+=String.fromCharCode(val ^ xlat.charCodeAt(seed++))
-                  seed%=xlat.length
-                              val = 0;
-                      }
-      
-                      val *= 16
-      
-              if(isDigit(crypttext.charAt(i))) {
-                  val += crypttext.charCodeAt(i) - 0x30
-                  continue
-              }
-      
-      
-              if(crypttext.charCodeAt(i) >= 0x41 && crypttext.charCodeAt(i) <= 0x46) {
-                  val += crypttext.charCodeAt(i) - 0x41 + 0x0a
-                  continue
-              }
-      
-              if(crypttext.length != i)
-                  return
-              }
-      
-          document.getElementById("plaintext").innerHTML = plaintext;
-      }
-      
-      -->
-      </script>
-
     <div id="header">
       <h1><a href="index.html">Online Tools</a></h1>
     </div>
@@ -89,14 +28,74 @@
         </h1>
         <div class="description">Cisco Type 7 Password Cracker
         </div>
+        <script language="JavaScript1.2" type="text/javascript">
+          <!--
+          // Is the character a digit?
+          function isDigit(theDigit)
+          {
+              var digitArray = new Array('0','1','2','3','4','5','6','7','8','9')
+          
+              for (j = 0; j < digitArray.length; j++)  {
+                  if (theDigit == digitArray[j])
+                      return true
+              }
+              return false
+          }
+          
+          
+          // Generate a config file ready for loading
+          function crackPassword(form)
+          {
+              var crypttext=form.crypttext.value.toUpperCase()
+              var plaintext=''
+              var xlat="dsfd;kfoA,.iyewrkldJKDHSUBsgvca69834ncxv9873254k;fg87"
+              var seed, i, val=0
+          
+              if(crypttext.length & 1)
+                  return
+          
+              seed = (crypttext.charCodeAt(0) - 0x30) * 10 + crypttext.charCodeAt(1) - 0x30
+          
+              if (seed > 15 || !isDigit(crypttext.charAt(0)) || !isDigit(crypttext.charAt(1)))
+                  return
+          
+                  for (i = 2 ; i <= crypttext.length; i++) {
+                          if(i !=2 && !(i & 1)) {
+                                  plaintext+=String.fromCharCode(val ^ xlat.charCodeAt(seed++))
+                      seed%=xlat.length
+                                  val = 0;
+                          }
+          
+                          val *= 16
+          
+                  if(isDigit(crypttext.charAt(i))) {
+                      val += crypttext.charCodeAt(i) - 0x30
+                      continue
+                  }
+          
+          
+                  if(crypttext.charCodeAt(i) >= 0x41 && crypttext.charCodeAt(i) <= 0x46) {
+                      val += crypttext.charCodeAt(i) - 0x41 + 0x0a
+                      continue
+                  }
+          
+                  if(crypttext.length != i)
+                      return
+                  }
+          
+              form.plaintext.value=plaintext
+          }
+          
+          -->
+          </script>
         <div class="input">
-          <input id="crypttext" name="crypttext" size="60" type="text">
+          <textarea id="crypttext" name="crypttext" placeholder="Input"></textarea>
         </div>
         <div class="submit">
-          <input value="Crack Password" onclick="crackPassword()" type="button">
+          <input value="Crack Password" onclick="crackPassword(this.form)" type="button">
         </div>
         <div class="output">
-          <input id="plaintext" name="plaintext" size="40" type="text">
+          <textarea id="plaintext" name="plaintext" placeholder="Output"></textarea>
         </div>
       </div>
     </div>
