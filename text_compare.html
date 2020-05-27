@@ -24,59 +24,51 @@
     <div id="body">
       <script src="js/main.js"></script>
       <div id="main">
-        <h1>Text Compare!!
-        </h1>
-        <div class="description">Text Compare!!
-        </div>
-          <form onsubmit="compare(); return false;">
-            <div class="input">
-              <textarea id="txt1" name="txt1" placeholder="Text 1"></textarea>
+        <h1 id="heading" class="display-4">Compare!</h1>
+        <form onsubmit="test(); return false;" class=indexsubmit>
+            <div class="form-group arealeft">
+                <label for="textarea1">Text 1</label>
+                <textarea id="txt1" class="form-control col-xs-12" id="textarea1" rows="12" cols="60" maxlength="1000" placeholder="1st text to compare..."></textarea>
             </div>
-            <div class="submit">
-              <input id="submitbtn" value="Compare!" type="button">
-              <label>
-                <h1 id="heading" >Result!</h1>
-              </label>
-
+            <div class="form-group arearight">
+                <label for="textarea1">Text 2</label>
+                <textarea id ="txt2" class="form-control col-xs-12" id="textarea1" rows="12" cols="60" maxlength="1000" placeholder="2nd text to compare..."></textarea>
             </div>
-            <div class="output">
-              <textarea id="txt2" name="txt2" placeholder="Text 2"></textarea>
-            </div>
-          </form>
-          <script>
-            function compare()
-            {
-                let txt1 = document.querySelector('#txt1').value;
-                let txt2 = document.querySelector('#txt2').value;   
+            <button id ="submitbtn" type="submit" class="btn btn-lg spacebutton btn-secondary ">Submit!</button>
+        </form>
+      </div>
+      <script>
+        function compare()
+        {
+            let txt1 = document.querySelector('#txt1').value;
+            let txt2 = document.querySelector('#txt2').value;   
 
-                let result = 'Compare!';
+            let result = 'Compare!';
 
-                if (txt1 != '' || txt2 != ''){
-                    if (txt1 === txt2){
-                        result = 'The Same!!'
-                        }
+            if (txt1 != '' || txt2 != ''){
+                if (txt1 === txt2){
+                    result = 'The Same!!'
+                    }
 
-                    if (txt1 != txt2){
-                        result = 'Different!'
-                        }   
-                }
-
-                document.querySelector('#heading').innerHTML = result;
+                if (txt1 != txt2){
+                    result = 'Different!'
+                    }   
             }
 
-            document.querySelector('#submitbtn').onclick = function() {
+            document.querySelector('#heading').innerHTML = result;
+        }
 
-                let txt1 = document.querySelector('#txt1').value;
-                let txt2 = document.querySelector('#txt2').value;
+        document.querySelector('#submitbtn').onclick = function() {
 
-                if (txt1 != '' || txt2 != ''){
-                    document.querySelector('#submitbtn').innerText = 'Try Again';
+            let txt1 = document.querySelector('#txt1').value;
+            let txt2 = document.querySelector('#txt2').value;
 
-                    }
+            if (txt1 != '' || txt2 != ''){
+                document.querySelector('#submitbtn').innerText = 'Try Again';
+
                 }
-        </script>
-
-      </div>
+            }
+    </script>
     </div>
     <div id="footer">© 2020 <a href="https://winternals.net/">Winternals.NET</a>. Powered by <a href="https://www.linkedin.com/in/tehranguluzade">Tehran Guluzade</a>.</div>
   </body>
