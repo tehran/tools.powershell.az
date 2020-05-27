@@ -28,8 +28,18 @@
         </h1>
         <div class="description">Text Compare!!
         </div>
-
-        <script>
+          <form onsubmit="compare(); return false;" class=indexsubmit>
+            <div class="input">
+              <textarea id="txt1" name="txt1" placeholder="Text 1"></textarea>
+            </div>
+            <div class="submit">
+              <input id="submitbtn" value="Compare!" type="button">
+            </div>
+            <div class="output">
+              <textarea id="txt2" name="txt2" placeholder="Text 2"></textarea>
+            </div>
+          </form>
+          <script>
             function compare()
             {
                 let txt1 = document.querySelector('#txt1').value;
@@ -62,17 +72,6 @@
                 }
         </script>
 
-          <form onsubmit="compare(); return false;" class=indexsubmit>
-            <div class="input">
-              <textarea id="txt1" name="txt1" placeholder="Text 1"></textarea>
-            </div>
-            <div class="submit">
-              <input id="submitbtn" value="Submit!" type="button">
-            </div>
-            <div class="output">
-              <textarea id="txt2" name="txt2" placeholder="Text 2"></textarea>
-            </div>
-          </form>
       </div>
     </div>
     <div id="footer">© 2020 <a href="https://winternals.net/">Winternals.NET</a>. Powered by <a href="https://www.linkedin.com/in/tehranguluzade">Tehran Guluzade</a>.</div>
