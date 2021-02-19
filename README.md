@@ -1,2 +1,2 @@
-# tools.winternals.net
-tools.winternals.net
+# tools.kernel.az
+tools.kernel.az
